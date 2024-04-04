@@ -9,6 +9,15 @@ builds:
       - linux
     goarch:
       - amd64
+      - arm
+      - arm64
+    goarm:
+      - 6
+      - 7
+    goamd64:
+      - v2
+      - v3
+
 nfpms:
   -
     package_name: pcopy
@@ -48,9 +57,14 @@ nfpms:
       postinstall: "scripts/postinst.sh"
       postremove: "scripts/postrm.sh"
 archives:
-  - replacements:
-      386: i386
-      amd64: x86_64
+  - id: pcopy
+    name_template: >-
+      {{- .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end -}}
 checksum:
   name_template: 'checksums.txt'
 snapshot:
