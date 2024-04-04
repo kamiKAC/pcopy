@@ -81,6 +81,6 @@ dockers:
     ids:
       - pcopy
     image_templates:
-      - "binwiederhier/pcopy:latest"
-      - "binwiederhier/pcopy:{{ .Tag }}"
-      - "binwiederhier/pcopy:v{{ .Major }}.{{ .Minor }}"
+      - "kamikac/pcopy:latest"
+      - "kamikac/pcopy:{{ .Tag }}"
+      - "kamikac/pcopy:v{{ .Major }}.{{ .Minor }}"
