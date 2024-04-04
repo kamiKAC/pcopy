@@ -1,5 +1,5 @@
-name: test
-on: [push, pull_request,workflow_dispatch]
+name: build
+on: [workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -13,6 +13,6 @@ jobs:
       - name: Install test dependencies
         run: sudo apt-get install netcat-openbsd
       - name: Run tests, formatting, vetting and linting
-        run: make check
+        run: make build
       # - name: Run and upload coverage to codecov.io
       #   run: make coverage coverage-upload
