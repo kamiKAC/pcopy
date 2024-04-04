@@ -21,7 +21,11 @@ builds:
 nfpms:
   -
     package_name: pcopy
-    file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Arch }}"
+    file_name_template: >-
+      {{- trimsuffix .ConventionalFileName .ConventionalExtension -}}
+      {{- if and (eq .Arm "6") (eq .ConventionalExtension ".deb") }}6{{ end -}}
+      {{- if not (eq .Amd64 "v1")}}{{ .Amd64 }}{{ end -}}
+      {{- .ConventionalExtension -}}
     homepage: https://heckel.io/pcopy
     maintainer: Philipp C. Heckel <philipp.heckel@gmail.com>
     description: Copy/paste across machines
