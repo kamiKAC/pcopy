@@ -83,10 +83,10 @@ staticcheck: .PHONY
 # Building targets
 
 build: .PHONY
-	goreleaser build --rm-dist
+	goreleaser build --clean
 
 build-snapshot:
-	goreleaser build --snapshot --rm-dist
+	goreleaser build --snapshot --clean
 
 build-simple: clean
 	mkdir -p dist/pcopy_linux_amd64
@@ -102,10 +102,10 @@ clean: .PHONY
 # Releasing targets
 
 release:
-	goreleaser release --rm-dist
+	goreleaser release --clean
 
 release-snapshot:
-	goreleaser release --snapshot --skip-publish --rm-dist
+	goreleaser release --snapshot --skip-publish --clean
 
 
 # Installing targets
