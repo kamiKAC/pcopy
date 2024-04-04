@@ -13,6 +13,6 @@ jobs:
       - name: Install goreleaser
         run: go install github.com/goreleaser/goreleaser@v1.20
       - name: Run build
-        run: make build
+        run: make build-snapshot
       # - name: Run and upload coverage to codecov.io
       #   run: make coverage coverage-upload
